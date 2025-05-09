@@ -9,10 +9,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryColor: "#fcf5ec",
-        bluePrimary: "#A8DBF2",
-        blueSecondary: "#BADFFF",
-        customTeal: "#008080",
+        primaryColor: "#00A76F",
+        primaryHover: "#007867",
+        primaryBackground: "#C8FAD6",
+        secondaryColor: "#8E33FF",
+        secondaryBackground: "#EFD6FF",
+        infoColor: "#00B8D9",
+        textColor: "#637381",
+        headerColor: "#1c252e",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -60,8 +64,8 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        texta: "var(--font-texta)",
-        lato: "var(--font-lato)",
+        barlow: "var(--font-barlow)",
+        publicSans: "var(--font-publicSans)",
       },
     },
   },
