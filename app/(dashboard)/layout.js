@@ -38,13 +38,13 @@ const DashboardLayout = ({ children }) => {
         </ScrollArea>
 
         {/* Bottom: Logout */}
-        <div className=" py-2  px-5">
-          <button className="w-full  py-2 px-4 rounded text-sm flex items-center bg-red-100/55 hover:bg-red-100/80 hover:text-red-400 justify-center gap-4 text-textColor font-semibold">
+        <div className=" py-3  px-5">
+          <button className="w-full  py-3 px-4 rounded text-sm flex items-center bg-red-100/55 hover:bg-red-100/80 hover:text-red-400 justify-center gap-4 text-textColor font-semibold">
             <LogOut size={20} /> Logout
           </button>
         </div>
       </aside>
-      <main className="w-full">
+      <main className="w-full overflow-y-auto">
         <Navbar />
         {children}
       </main>

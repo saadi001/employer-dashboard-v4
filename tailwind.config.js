@@ -67,6 +67,10 @@ module.exports = {
         barlow: "var(--font-barlow)",
         publicSans: "var(--font-publicSans)",
       },
+      boxShadow: {
+        "custom-sm":
+          "0 0 2px 0 rgba(145 158 171 / 0.2),0 12px 24px -4px rgba(145 158 171 / 0.12)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
