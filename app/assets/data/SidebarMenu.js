@@ -1,4 +1,4 @@
-const SidebarMenu = [
+export const SidebarMenu = [
   {
     title: "OVERVIEW",
     menus: [
@@ -6,6 +6,11 @@ const SidebarMenu = [
         icon: "",
         name: "Dashboard",
         link: "/dashboard",
+      },
+      {
+        icon: "",
+        name: "Setting",
+        link: "/setting",
       },
     ],
   },

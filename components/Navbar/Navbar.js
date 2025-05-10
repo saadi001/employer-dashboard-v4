@@ -1,0 +1,21 @@
+import Image from "next/image";
+import avatar from "../../app/assets/avatar/avatar-25.webp";
+import logo from "../../app/assets/logo/compane demo logo.webp";
+
+const Navbar = () => {
+  return (
+    <nav className="flex items-center justify-between gap-2 px-8 py-3 bg-white/80 backdrop-blur shadow-sm sticky top-0">
+      <div className="flex items-center gap-2 text-headerColor text-sm font-semibold">
+        <Image src={logo} alt="brand" className="w-5" />
+        Innovate International Ltd
+      </div>
+      <div>
+        <div>
+          <Image src={avatar} alt="profile" className="w-9 h-9 rounded-full" />
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
