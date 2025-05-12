@@ -64,7 +64,7 @@ const Dashboard = () => {
       </div>
 
       {/* jobs  */}
-      <div className="mt-6 grid grid-cols-2 gap-4">
+      <div className="mt-6 grid grid-cols-2 gap-5">
         {[...Array(5)].map((_, i) => (
           <div key={i} className="shadow-custom-base p-5 rounded-3xl">
             {/* top bar  */}

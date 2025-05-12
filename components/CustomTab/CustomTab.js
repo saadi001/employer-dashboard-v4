@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
-const CustomTab = ({ data, className }) => {
+const CustomTab = ({ data, className, hasUnderBorder }) => {
   const [activeTab, setActiveTab] = useState("all");
   const [underlineStyle, setUnderlineStyle] = useState({ width: 0, left: 0 });
   const tabRefs = useRef([]);
@@ -34,7 +34,11 @@ const CustomTab = ({ data, className }) => {
         onValueChange={onTabChange}
         className={`${className}`}
       >
-        <TabsList className="flex justify-start gap-6 relative rounded-none py-1.5 px-2 bg-transparent ">
+        <TabsList
+          className={`flex justify-start gap-6 relative rounded-none py-1.5 px-2 bg-transparent ${
+            hasUnderBorder && "border-b-2 border-gray-100"
+          }`}
+        >
           {data?.map((tab, i) => {
             return (
               <TabsTrigger
@@ -60,7 +64,7 @@ const CustomTab = ({ data, className }) => {
                       tab?.value === activeTab
                         ? `${tab?.activeBackground} text-white`
                         : `${tab?.inActiveBackground} ${tab?.inActiveText}`
-                    }  rounded-md text-xs`}
+                    }  rounded-md text-xs font-semibold `}
                   >
                     {tab?.total}
                   </span>
@@ -70,7 +74,9 @@ const CustomTab = ({ data, className }) => {
           })}
 
           <motion.div
-            className="absolute bottom-0 rounded-full h-[2px] bg-gray-800"
+            className={`absolute  rounded-full h-[2px] bg-gray-800 ${
+              hasUnderBorder ? "-bottom-[2px]" : "bottom-0"
+            }`}
             initial={false}
             animate={underlineStyle}
             transition={{
