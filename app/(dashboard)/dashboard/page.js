@@ -1,5 +1,7 @@
 // import bg from "../../assets/backgroundImage/noise.webp";
+import { DashBoardJobTabData } from "@/app/assets/data/dashboardDatas";
 import Advertisement from "@/components/Advertisement/Advertisement";
+import CustomTab from "@/components/CustomTab/CustomTab";
 import DashboardCard from "@/components/DashboardCard/DashboardCard";
 import {
   BorderFullIcon,
@@ -19,8 +21,9 @@ const Dashboard = () => {
           {/* cards  */}
           <DashboardCard />
           {/* tab  */}
-          <div className=" flex items-end">
-            <div className="text-sm pt-5 flex items-center gap-8 ">
+          <div className=" flex items-end pt-3">
+            <CustomTab data={DashBoardJobTabData} />
+            {/* <div className="text-sm pt-5 flex items-center gap-8 ">
               <div className="">
                 <p className="flex items-center gap-2 py-2 border-b-2 border-headerColor font-semibold">
                   All{" "}
@@ -53,12 +56,13 @@ const Dashboard = () => {
                   </span>
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* advertisement */}
         <Advertisement />
       </div>
+
       {/* jobs  */}
       <div className="mt-6 grid grid-cols-2 gap-4">
         {[...Array(5)].map((_, i) => (
@@ -149,7 +153,7 @@ const Dashboard = () => {
               <div className="text-xs text-primaryColor hover:underline cursor-pointer">
                 Edit Job
               </div>
-              <button className="text-sm bg-primaryColor rounded-lg hover:bg-primaryHover px-3 py-1.5 text-white">
+              <button className="text-sm bg-primaryColor rounded-lg hover:bg-primaryHover hover:shadow hover:shadow-primaryHover/50 px-3 py-1.5 text-white transition-all">
                 See Details
               </button>
             </div>

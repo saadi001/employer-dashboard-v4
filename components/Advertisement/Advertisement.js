@@ -14,8 +14,8 @@ const Advertisement = () => {
           <p className="text-xs text-gray-50 mt-1.5 leading-tight">
             Unlock exclusive discounts and save more on every purchase.
           </p>
-          <button className="bg-green-200 hover:bg-green-300  text-gray-700 text-xs font-semibold px-3 py-1.5 mt-3 rounded-md">
-            Redeem
+          <button className="bg-green-200 hover:bg-green-300  text-gray-700 text-xs font-semibold px-3 py-1.5 mt-3 rounded-md transition-all">
+            Post Job
           </button>
         </div>
       </div>
