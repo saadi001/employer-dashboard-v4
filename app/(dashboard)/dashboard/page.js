@@ -1,10 +1,14 @@
-import { Hired } from "@/app/assets/data/svgComponent/svgComponent";
-import Image from "next/image";
 // import bg from "../../assets/backgroundImage/noise.webp";
-import bg2 from "../../assets/backgroundImage/noise2.jpg";
-import bg3 from "../../assets/icons/abc-australia-svgrepo-com.svg";
-import totalCV from "../../assets/icons/total cv.png";
-import totalPost from "../../assets/icons/total post.png";
+import Advertisement from "@/components/Advertisement/Advertisement";
+import DashboardCard from "@/components/DashboardCard/DashboardCard";
+import {
+  BorderFullIcon,
+  UserCheck01Icon,
+  UserFullViewIcon,
+} from "hugeicons-react";
+import { CalendarRange, EllipsisVertical } from "lucide-react";
+import Image from "next/image";
+import react from "../../assets/icons/react icon.svg";
 
 const Dashboard = () => {
   return (
@@ -13,53 +17,7 @@ const Dashboard = () => {
       <div className="flex gap-4 w-full ">
         <div className="w-[75%] ">
           {/* cards  */}
-          <div className="w-full grid grid-cols-3 gap-4">
-            <div className="shadow-custom-sm rounded-2xl px-6 py-8 relative overflow-hidden">
-              <h3 className="font-barlow text-[2rem] font-bold text-headerColor">
-                06
-              </h3>
-              <p className="font-publicSans text-sm text-textColor font-semibold">
-                Total job posted
-              </p>
-              <div className="absolute -right-[90px] -top-[44px] w-[160px] h-[160px] -rotate-45 rounded-3xl p-5 bg-yellow-50 -z-20">
-                {/* <TotalJobIcon className={"rotate-45"} /> */}
-                <Image
-                  src={totalPost}
-                  alt="post"
-                  className="object-cover rotate-45"
-                />
-              </div>
-            </div>
-
-            <div className="shadow-custom-sm rounded-2xl px-6 py-8 relative overflow-hidden">
-              <h3 className="font-barlow text-[2rem] font-bold text-headerColor">
-                526
-              </h3>
-              <p className="font-publicSans text-sm text-textColor font-semibold">
-                CV received in total
-              </p>
-              <div className="absolute -right-[90px] -top-[44px] w-[160px] h-[160px] -rotate-45 rounded-3xl p-5 bg-teal-50 -z-20">
-                {/* <TotalCVIcon className={"rotate-45"} /> */}
-                <Image
-                  src={totalCV}
-                  alt="post"
-                  className="object-cover rotate-45"
-                />
-              </div>
-            </div>
-
-            <div className="shadow-custom-sm rounded-2xl px-6 py-8 relative overflow-hidden">
-              <h3 className="font-barlow text-[2rem] font-bold text-headerColor">
-                06
-              </h3>
-              <p className="font-publicSans text-sm text-textColor font-semibold">
-                Hired
-              </p>
-              <div className="absolute -right-[90px] -top-[44px] w-[160px] h-[160px] -rotate-45 rounded-3xl p-5 bg-secondaryBackground/60 -z-20">
-                <Hired className={"rotate-45"} />
-              </div>
-            </div>
-          </div>
+          <DashboardCard />
           {/* tab  */}
           <div className=" flex items-end">
             <div className="text-sm pt-5 flex items-center gap-8 ">
@@ -99,32 +57,104 @@ const Dashboard = () => {
           </div>
         </div>
         {/* advertisement */}
-        <div className="w-[25%]  p-4 rounded-xl bg-primaryHover relative overflow-hidden">
-          <div className="z-40 absolute inset-4 flex justify-center items-center ">
+        <Advertisement />
+      </div>
+      {/* jobs  */}
+      <div className="mt-6 grid grid-cols-2 gap-4">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="shadow-custom-base p-5 rounded-3xl">
+            {/* top bar  */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="bg-primaryBackground flex items-center gap-1 text-xs font-publicSans text-primaryColor px-2 py-0.5 rounded-full border">
+                  <span className="h-1.5 w-1.5   bg-primaryColor inline-block rounded-full"></span>{" "}
+                  Open
+                </div>
+                <div className="h-4 border-l border-gray-300"></div>
+                <div className="text-sm text-textColor">Development</div>
+              </div>
+              <div className="hover:bg-gray-200/80 p-1.5 rounded-full text-headerColor cursor-pointer transition-all">
+                <EllipsisVertical size={16} />
+              </div>
+            </div>
+
+            {/* header  */}
             <div>
-              <h3 className="text-xl text-white leading-tight">
-                Get <span className="text-3xl font-barlow">20%</span> <br />{" "}
-                Discount!
-              </h3>
-              <p className="text-xs text-gray-50 mt-1.5 leading-tight">
-                Unlock exclusive discounts and save more on every purchase.
-              </p>
-              <button className="bg-green-200 hover:bg-green-300  text-gray-700 text-xs font-semibold px-3 py-1.5 mt-3 rounded-md">
-                Redeem
+              <div className="mt-3">
+                <div className="flex">
+                  <div className="flex items-center gap-3">
+                    <div className=" p-1 inline-block rounded-full bg-gray-100">
+                      <Image src={react} alt="react" className="w-7" />
+                    </div>
+                    <div>
+                      <h3 className="text-base text-headerColor font-semibold">
+                        Jr. Frontend Developer
+                      </h3>
+                      <p className="flex items-center gap-1.5 text-textColor text-xs">
+                        <CalendarRange size={14} className="-mt-0.5" />{" "}
+                        <span className="inline-block">Mar 24, 2025</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div></div>
+            </div>
+
+            {/* description  */}
+            <div className="p-3  bg-gray-100 mt-5 rounded-lg">
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-textColor flex items-center gap-1">
+                    <BorderFullIcon size={16} strokeWidth={2} /> Total
+                    Application
+                  </p>
+                  <p className="text-headerColor font-barlow font-semibold">
+                    150
+                  </p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-textColor flex items-center gap-1">
+                    <UserFullViewIcon size={16} strokeWidth={2} /> New
+                    Application
+                  </p>
+                  <p className="text-headerColor font-barlow font-semibold">
+                    50
+                  </p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-textColor flex items-center gap-1">
+                    <UserCheck01Icon size={16} strokeWidth={2} /> Shortlisted
+                  </p>
+                  <p className="text-headerColor font-barlow font-semibold">
+                    10
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-xs mt-3">
+                <div className="px-2 border rounded-full py-0.5 bg-red-500/30 text-headerColor">
+                  On Site
+                </div>
+                <div className="px-2 border rounded-full py-0.5 bg-green-500/30 text-headerColor">
+                  Full Time
+                </div>
+                <div className="px-2 border rounded-full py-0.5 bg-indigo-500/30">
+                  3 Vacancy{" "}
+                </div>
+              </div>
+            </div>
+
+            {/* footer */}
+            <div className="flex items-center justify-between mt-3">
+              <div className="text-xs text-primaryColor hover:underline cursor-pointer">
+                Edit Job
+              </div>
+              <button className="text-sm bg-primaryColor rounded-lg hover:bg-primaryHover px-3 py-1.5 text-white">
+                See Details
               </button>
             </div>
           </div>
-          <Image
-            src={bg2}
-            alt="background"
-            className="absolute inset-0 object-cover opacity-20 scale-150 z-0"
-          />
-          <Image
-            src={bg3}
-            alt="background image"
-            className="absolute -right-5 -top-5 scale-150 z-10"
-          />
-        </div>
+        ))}
       </div>
     </div>
   );
