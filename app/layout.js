@@ -1,5 +1,6 @@
 import { Toaster } from "@/components/ui/sonner";
 import { Barlow, Public_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -30,6 +31,10 @@ export default function RootLayout({ children }) {
         {children}
         <Toaster position="top-right" richColors theme={"light"} />
       </body>
+      <Script
+        src="https://cdn.lordicon.com/lordicon-1.2.0.js"
+        strategy="afterInteractive"
+      />
     </html>
   );
 }

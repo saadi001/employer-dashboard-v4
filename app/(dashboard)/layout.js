@@ -29,7 +29,12 @@ const DashboardLayout = ({ children }) => {
                 </p>
                 <div className="space-y-1">
                   {menu?.menus.map((m, i) => (
-                    <Menu key={i} name={m?.name} link={m?.link} />
+                    <Menu
+                      key={i}
+                      name={m?.name}
+                      link={m?.link}
+                      icon={m?.icon}
+                    />
                   ))}
                 </div>
               </div>

@@ -3,14 +3,24 @@ export const SidebarMenu = [
     title: "OVERVIEW",
     menus: [
       {
-        icon: "",
+        icon: "efxgwrkc",
         name: "Dashboard",
         link: "/dashboard",
       },
       {
-        icon: "",
-        name: "Setting",
-        link: "/setting",
+        icon: "mqqsmsvs",
+        name: "Jobs",
+        link: "/jobs",
+      },
+      {
+        icon: "ucjqqgja",
+        name: "Post Job",
+        link: "/post-job",
+      },
+      {
+        icon: "ysoasulr",
+        name: "Analytics",
+        link: "/analytics",
       },
     ],
   },

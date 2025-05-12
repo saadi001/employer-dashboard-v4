@@ -1,9 +1,10 @@
 "use client";
-import { DashboardSquare02Icon } from "hugeicons-react";
+
+import LordIconPlayer from "@/lib/LordIconPlayer";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const Menu = ({ name, icon, link }) => {
+const Menu = ({ name, icon, link, target = "a", trigger = "hover" }) => {
   const pathname = usePathname();
   return (
     <Link
@@ -11,16 +12,22 @@ const Menu = ({ name, icon, link }) => {
       className={`px-3 ${
         pathname === link
           ? "bg-primaryColor/10 hover:bg-primaryColor/20 text-primaryColor"
-          : ""
-      } hover:bg-gray-100 py-3 rounded-md flex items-center gap-2.5 w-full`}
+          : "text-textColor"
+      } hover:bg-gray-100 py-2.5 rounded-md flex items-center gap-2.5 w-full`}
     >
-      <DashboardSquare02Icon
+      {/* <DashboardSquare02Icon
         size={16}
         strokeWidth={2}
         className="text-textColor"
+      /> */}
+      <LordIconPlayer
+        link={icon}
+        trigger={trigger}
+        target={target}
+        color={pathname === link ? "#00a76f" : "#637381"}
       />
       <span
-        className={`text-sm ${
+        className={`text-sm  ${
           pathname === link ? "font-semibold" : "font-medium"
         } `}
       >
