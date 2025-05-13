@@ -1,3 +1,4 @@
+import JobStatus from "@/helper/JobStatus";
 import {
   BorderFullIcon,
   UserCheck01Icon,
@@ -13,10 +14,7 @@ const JobCard = () => {
       {/* top bar  */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="bg-primaryBackground flex items-center gap-1 text-xs font-publicSans text-primaryColor px-2 py-0.5 rounded-full border">
-            <span className="h-1.5 w-1.5   bg-primaryColor inline-block rounded-full"></span>{" "}
-            Open
-          </div>
+          <JobStatus status={"Open"} />
           <div className="h-4 border-l border-gray-300"></div>
           <div className="text-sm text-textColor">Development</div>
         </div>
