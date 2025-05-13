@@ -35,7 +35,7 @@ const CustomTab = ({ data, className, hasUnderBorder }) => {
         className={`${className}`}
       >
         <TabsList
-          className={`flex justify-start gap-6 relative rounded-none py-1.5 px-2 bg-transparent ${
+          className={`flex justify-start gap-8 relative rounded-none py-1.5 px-2 bg-transparent ${
             hasUnderBorder && "border-b-2 border-gray-100"
           }`}
         >
@@ -49,6 +49,9 @@ const CustomTab = ({ data, className, hasUnderBorder }) => {
                   "focus-visible:ring-0 data-[state=active]:shadow-none px-0"
                 )}
               >
+                {tab?.icon && (
+                  <span className="inline-block mr-1.5">{tab?.icon}</span>
+                )}
                 <span
                   className={`${
                     tab?.value === activeTab

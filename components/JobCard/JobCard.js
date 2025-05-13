@@ -4,8 +4,9 @@ import {
   UserCheck01Icon,
   UserFullViewIcon,
 } from "hugeicons-react";
-import { CalendarRange, EllipsisVertical } from "lucide-react";
+import { CalendarRange, ChevronRight, EllipsisVertical } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import react from "../../app/assets/icons/react icon.svg";
 
 const JobCard = () => {
@@ -86,9 +87,11 @@ const JobCard = () => {
         <div className="text-xs text-primaryColor hover:underline cursor-pointer">
           Edit Job
         </div>
-        <button className="text-sm bg-primaryColor rounded-lg hover:bg-primaryHover hover:shadow-md hover:shadow-primaryHover/50 px-3 py-1.5 text-white transition-all">
-          See Details
-        </button>
+        <Link href={"/jobs/example"}>
+          <button className="text-[13px] px-2 py-1.5 text-headerColor font-bold transition-all flex items-center gap-0.5 hover:bg-slate-700/10 rounded-full">
+            See Details <ChevronRight size={18} />
+          </button>
+        </Link>
       </div>
     </div>
   );
