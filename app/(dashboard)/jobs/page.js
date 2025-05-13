@@ -1,5 +1,7 @@
 import { DashBoardJobTabData } from "@/app/assets/data/dashboardDatas";
+import CustomDateSelect from "@/components/CustomDateSelect/CustomDateSelect";
 import CustomTab from "@/components/CustomTab/CustomTab";
+import JobCard from "@/components/JobCard/JobCard";
 import { PlusSignCircleIcon } from "hugeicons-react";
 
 const Jobs = () => {
@@ -23,6 +25,24 @@ const Jobs = () => {
         className={"mt-4"}
         hasUnderBorder={true}
       />
+      {/* filter  */}
+      <div className="mt-4 flex items-center gap-3">
+        <CustomDateSelect content={"Start Date"} />
+        <CustomDateSelect content={"End Date"} />
+
+        <input
+          type="text"
+          placeholder="Search by job title"
+          className="w-full h-auto border rounded-lg flex-1 text-base  px-3 py-2.5 text-headerColor focus:outline-0 hover:border-gray-600  focus:border-gray-600 focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
+        />
+      </div>
+
+      {/* jobs  */}
+      <div className="mt-8 grid grid-cols-2 gap-5">
+        {[...Array(5)].map((_, i) => (
+          <JobCard key={i} />
+        ))}
+      </div>
     </div>
   );
 };
