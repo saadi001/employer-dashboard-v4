@@ -65,11 +65,13 @@ const CustomTab = ({ data, className, hasUnderBorder }) => {
                   <span
                     className={`ml-1 min-w-6 min-h-6 flex items-center justify-center  ${
                       tab?.value === activeTab
-                        ? `${tab?.activeBackground} text-white`
+                        ? tab?.bracket
+                          ? ` text-headerColor`
+                          : `${tab?.activeBackground} text-white`
                         : `${tab?.inActiveBackground} ${tab?.inActiveText}`
                     }  rounded-md text-xs font-semibold `}
                   >
-                    {tab?.total}
+                    {tab?.bracket && "("} {tab?.total} {tab?.bracket && ")"}
                   </span>
                 )}
               </TabsTrigger>
