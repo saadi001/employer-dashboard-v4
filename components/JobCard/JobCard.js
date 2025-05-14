@@ -87,9 +87,13 @@ const JobCard = () => {
         <div className="text-xs text-primaryColor hover:underline cursor-pointer">
           Edit Job
         </div>
-        <Link href={"/jobs/example"}>
-          <button className="text-[13px] px-2 py-1.5 text-headerColor font-bold transition-all flex items-center gap-0.5 hover:bg-slate-700/10 rounded-full">
-            See Details <ChevronRight size={18} />
+        <Link href={"/jobs/example"} className="group">
+          <button className="text-[13px]  px-2 py-1.5 text-headerColor font-bold transition-all flex items-center gap-0.5 hover:bg-slate-700/10 rounded-full">
+            See Details{" "}
+            <ChevronRight
+              size={18}
+              className="group-hover:translate-x-0.5 transition-all"
+            />
           </button>
         </Link>
       </div>
