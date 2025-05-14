@@ -1,4 +1,8 @@
-import { FilterIcon, UserCheck01Icon, UserStoryIcon } from "hugeicons-react";
+import {
+  Agreement02Icon,
+  UserCheck01Icon,
+  UserStoryIcon,
+} from "hugeicons-react";
 import { UserRoundX } from "lucide-react";
 
 export const DashBoardJobTabData = [
@@ -82,7 +86,7 @@ export const jobDetailsTab = [
   },
   {
     label: "Shortlisted",
-    value: "Shortlisted",
+    value: "shortlisted",
     icon: <UserCheck01Icon size={16} strokeWidth={2} />,
     borderColor: "bg-secondaryColor",
     total: 10,
@@ -92,9 +96,9 @@ export const jobDetailsTab = [
     // inActiveText: "text-emerald-500",
   },
   {
-    label: "Interviewed",
-    value: "Interviewed",
-    icon: <FilterIcon size={16} strokeWidth={2} />,
+    label: "Hired",
+    value: "hired",
+    icon: <Agreement02Icon size={16} strokeWidth={2} />,
     total: 2,
     bracket: true,
     // activeBackground: "bg-cyan-500",

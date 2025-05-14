@@ -1,15 +1,11 @@
 "use client";
 import { jobDetailsTab } from "@/app/assets/data/dashboardDatas";
+import ApplicantCard from "@/components/ApplicantCard/ApplicantCard";
+import ApplicantFilterDropdown from "@/components/CustomDropdown/ApplicantFilterDropdown";
+import DownloadApplicantCV from "@/components/CustomDropdown/DownloadApplicantCV";
 import CustomTab from "@/components/CustomTab/CustomTab";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import JobStatus from "@/helper/JobStatus";
-import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
-import { ArrowDownToLine, ListFilter, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
 import reactIcon from "../../../assets/icons/react icon.svg";
 
@@ -94,7 +90,9 @@ const JobDetailsPage = ({ params }) => {
       </div>
       {/* filters  */}
       <div className="mt-2 flex items-center justify-between gap-2">
-        <div className="text-textColor text-xs">showing 10 of 100</div>
+        <div className="text-textColor text-xs px-1 items-stretch ">
+          Showing 10 of 100
+        </div>
         <div className="flex items-center gap-2 ">
           <div className="relative">
             <input
@@ -108,23 +106,16 @@ const JobDetailsPage = ({ params }) => {
             />
           </div>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <div className="border text-sm flex items-center gap-2  text-textColor px-3 py-2.5 rounded-lg hover:bg-gray-100/50  transition-all cursor-pointer ">
-                <ListFilter size={20} /> Filter
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className={"min-w-40"}>
-              <DropdownMenuItem>Experience</DropdownMenuItem>
-              <DropdownMenuItem>Age</DropdownMenuItem>
-              <DropdownMenuArrow className=" !fill-primaryColor" />
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <button className="border border-primaryColor hover:border-primaryHover text-sm flex items-center gap-1.5 text-gray-50 font-semibold px-3 py-2.5   rounded-lg hover:bg-primaryHover  transition-all bg-primaryColor ">
-            <ArrowDownToLine size={20} /> Download
-          </button>
+          <ApplicantFilterDropdown />
+          <DownloadApplicantCV />
         </div>
+      </div>
+
+      {/* applicants  */}
+      <div className="grid grid-cols-2 gap-3 mt-5">
+        <ApplicantCard />
+        <ApplicantCard />
+        <ApplicantCard />
       </div>
     </div>
   );
