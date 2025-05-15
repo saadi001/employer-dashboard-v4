@@ -5,8 +5,11 @@ import { useState } from "react";
 import { Drawer } from "vaul";
 import photo from "../../app/assets/avatar/avatar-25.webp";
 import CustomTab from "../CustomTab/CustomTab";
+import Answers from "../DrawerComponent/Answers";
 import Details from "../DrawerComponent/Details";
 import DrawerFooter from "../DrawerComponent/DrawerFooter";
+import Experience from "../DrawerComponent/Experience";
+import Resume from "../DrawerComponent/Resume";
 import { TabsContent } from "../ui/tabs";
 
 const CustomSheetVaul = ({ open, setOpen }) => {
@@ -89,9 +92,15 @@ const CustomSheetVaul = ({ open, setOpen }) => {
                 <TabsContent value={"all"}>
                   <Details />
                 </TabsContent>
-                <TabsContent value={"experience"}>exp</TabsContent>
-                <TabsContent value={"resume"}>resume</TabsContent>
-                <TabsContent value={"answers"}>ans</TabsContent>
+                <TabsContent value={"experience"}>
+                  <Experience />
+                </TabsContent>
+                <TabsContent value={"resume"}>
+                  <Resume />
+                </TabsContent>
+                <TabsContent value={"answers"}>
+                  <Answers />
+                </TabsContent>
               </>
             </CustomTab>
           </div>
