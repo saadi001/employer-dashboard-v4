@@ -116,3 +116,15 @@ export const jobDetailsTab = [
     // inActiveText: "text-yellow-500",
   },
 ];
+
+export const applicantCardData = [
+  {
+    status: "shortlisted",
+  },
+  {
+    status: "rejected",
+  },
+  {
+    status: "shortlisted",
+  },
+];

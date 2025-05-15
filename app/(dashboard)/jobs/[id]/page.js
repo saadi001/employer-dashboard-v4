@@ -1,5 +1,8 @@
 "use client";
-import { jobDetailsTab } from "@/app/assets/data/dashboardDatas";
+import {
+  applicantCardData,
+  jobDetailsTab,
+} from "@/app/assets/data/dashboardDatas";
 import ApplicantCard from "@/components/ApplicantCard/ApplicantCard";
 import ApplicantFilterDropdown from "@/components/CustomDropdown/ApplicantFilterDropdown";
 import DownloadApplicantCV from "@/components/CustomDropdown/DownloadApplicantCV";
@@ -113,7 +116,9 @@ const JobDetailsPage = ({ params }) => {
 
       {/* applicants  */}
       <div className="grid grid-cols-2 gap-3 mt-5">
-        <ApplicantCard />
+        {applicantCardData?.map((data, i) => (
+          <ApplicantCard data={data} key={i} />
+        ))}
         <ApplicantCard />
         <ApplicantCard />
       </div>
