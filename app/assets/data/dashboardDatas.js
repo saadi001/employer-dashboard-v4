@@ -1,9 +1,10 @@
 import {
   Agreement02Icon,
+  File01Icon,
   UserCheck01Icon,
   UserStoryIcon,
 } from "hugeicons-react";
-import { UserRoundX } from "lucide-react";
+import { BookUser, Layers2, SquareGanttChart, UserRoundX } from "lucide-react";
 
 export const DashBoardJobTabData = [
   {
@@ -126,5 +127,28 @@ export const applicantCardData = [
   },
   {
     status: "shortlisted",
+  },
+];
+
+export const sideDrawerData = [
+  {
+    label: "Details",
+    value: "all",
+    icon: <BookUser size={16} strokeWidth={2} />,
+  },
+  {
+    label: "Experience",
+    value: "experience",
+    icon: <Layers2 size={16} strokeWidth={2} />,
+  },
+  {
+    label: "Resume",
+    value: "resume",
+    icon: <File01Icon size={16} strokeWidth={2} />,
+  },
+  {
+    label: "Answers",
+    value: "answers",
+    icon: <SquareGanttChart size={16} strokeWidth={2} />,
   },
 ];

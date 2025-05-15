@@ -4,7 +4,14 @@ import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
-const CustomTab = ({ data, className, hasUnderBorder }) => {
+const CustomTab = ({
+  data,
+  className,
+  tablistClass,
+  hasUnderBorder,
+  activeContent,
+  children,
+}) => {
   const [activeTab, setActiveTab] = useState("all");
   const [underlineStyle, setUnderlineStyle] = useState({ width: 0, left: 0 });
   const tabRefs = useRef([]);
@@ -37,7 +44,7 @@ const CustomTab = ({ data, className, hasUnderBorder }) => {
         <TabsList
           className={`flex justify-start gap-8 relative rounded-none py-1.5 px-2 bg-transparent ${
             hasUnderBorder && "border-b-2 border-gray-100"
-          }`}
+          } ${tablistClass}`}
         >
           {data?.map((tab, i) => {
             return (
@@ -46,7 +53,7 @@ const CustomTab = ({ data, className, hasUnderBorder }) => {
                 value={tab?.value}
                 ref={(el) => (tabRefs.current[i] = el)}
                 className={cn(
-                  "focus-visible:ring-0 data-[state=active]:shadow-none px-0"
+                  "focus-visible:ring-0 data-[state=active]:shadow-none px-0 !bg-transparent"
                 )}
               >
                 {tab?.icon && (
@@ -57,7 +64,7 @@ const CustomTab = ({ data, className, hasUnderBorder }) => {
                     tab?.value === activeTab
                       ? "text-headerColor"
                       : "text-textColor"
-                  } transition-`}
+                  } `}
                 >
                   {tab?.label}
                 </span>
@@ -91,6 +98,7 @@ const CustomTab = ({ data, className, hasUnderBorder }) => {
             }}
           />
         </TabsList>
+        {children && children}
       </Tabs>
       {/* <div className="w-full border-b"></div> */}
     </>
