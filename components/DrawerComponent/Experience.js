@@ -22,7 +22,7 @@ const Experience = () => {
           </li>
           <li>
             Collect necessary documents to verify reporting data and ensure
-            compliance
+            compliance and more
           </li>
         </ul>
       </div>
