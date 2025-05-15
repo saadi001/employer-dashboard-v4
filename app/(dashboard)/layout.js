@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }) => {
         {/* Top: Logo */}
         <div className="px-6 py-5 relative">
           <Image src={logo} alt="logo" className="w-20" />
-          <div className="border rounded-full bg-white absolute top-1/2 -translate-y-1/2  -right-3 w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 z-[70]">
+          <div className="border rounded-full bg-white absolute top-1/2 -translate-y-1/2  -right-3 w-6 h-6 flex items-center justify-center cursor-pointer hover:bg-slate-100 z-[50]">
             <ChevronLeft size={16} className="text-slate-600" />
           </div>
         </div>

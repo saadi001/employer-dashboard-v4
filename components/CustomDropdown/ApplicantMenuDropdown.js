@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-const ApplicantMenuDropdown = () => {
+const ApplicantMenuDropdown = ({ setSeeDetails }) => {
   const [open, setOpen] = useState(false);
   return (
     <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
@@ -24,7 +24,10 @@ const ApplicantMenuDropdown = () => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align={"end"}>
-        <DropdownMenuItem className={"cursor-pointer"}>
+        <DropdownMenuItem
+          onClick={() => setSeeDetails(true)}
+          className={"cursor-pointer"}
+        >
           <ViewIcon /> View Details
         </DropdownMenuItem>
         <DropdownMenuArrow className="fill-primaryColor" />

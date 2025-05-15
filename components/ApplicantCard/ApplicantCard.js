@@ -1,3 +1,4 @@
+"use client";
 import {
   Building03Icon,
   CheckmarkCircle01Icon,
@@ -7,14 +8,18 @@ import {
 } from "hugeicons-react";
 import { CircleX } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 import photo from "../../app/assets/avatar/avatar-25.webp";
 import ApplicantMenuDropdown from "../CustomDropdown/ApplicantMenuDropdown";
+import CustomSheetVaul from "../CustomSheet/CustomSheetVaul";
 const ApplicantCard = ({ data }) => {
+  const [sheetOpen, setSheetOpen] = useState(false);
+
   return (
     <div className="shadow-custom-base px-4 pt-3 pb-2 rounded-2xl">
       {/* header  */}
-      <div className="flex justify-between">
-        <div className="flex items-center gap-3 ">
+      <div className="flex justify-between ">
+        <div className="flex items-center gap-3 w-full cursor-pointer ">
           <div className="w-11 h-11 rounded-full bg-gray-200/70 overflow-hidden">
             <Image
               src={photo}
@@ -22,8 +27,8 @@ const ApplicantCard = ({ data }) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex-1">
-            <h3 className="text-base text-headerColor font-semibold line-clamp-1">
+          <div onClick={() => setSheetOpen(!sheetOpen)} className="flex-1">
+            <h3 className="text-base text-headerColor font-semibold line-clamp-1 hover:underline">
               Sheikh Saadi Shuvo
             </h3>
 
@@ -39,7 +44,7 @@ const ApplicantCard = ({ data }) => {
             </div>
           </div>
         </div>
-        <ApplicantMenuDropdown />
+        <ApplicantMenuDropdown setSeeDetails={setSheetOpen} />
       </div>
       {/* details  */}
       <div className="mt-5 mb-3 flex flex-col gap-1">
@@ -94,6 +99,9 @@ const ApplicantCard = ({ data }) => {
           } */}
         </div>
       </div>
+
+      {/* <CustomSheet open={sheetOpen} setOpen={setSheetOpen} /> */}
+      <CustomSheetVaul open={sheetOpen} setOpen={setSheetOpen} />
     </div>
   );
 };

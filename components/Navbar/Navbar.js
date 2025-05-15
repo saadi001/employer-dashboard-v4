@@ -4,7 +4,7 @@ import logo from "../../app/assets/logo/compane demo logo.webp";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between gap-2 px-6 py-3.5 bg-white/25 backdrop-blur-lg sticky top-0 z-50">
+    <nav className="flex items-center justify-between gap-2 px-6 py-3.5 bg-white/25 backdrop-blur-lg sticky top-0 z-40">
       <div className="flex items-center gap-2 text-headerColor text-sm font-semibold">
         <Image src={logo} alt="brand" className="w-5" />
         Innovate International Ltd

@@ -5,7 +5,7 @@ import bg3 from "../../app/assets/icons/abc-australia-svgrepo-com.svg";
 const Advertisement = () => {
   return (
     <div className="w-[25%]  p-4 rounded-xl bg-primaryHover relative overflow-hidden">
-      <div className="z-40 absolute inset-4 flex justify-center items-center ">
+      <div className="z-30 absolute inset-4 flex justify-center items-center ">
         <div>
           <h3 className="text-xl text-white leading-tight">
             Get <span className="text-3xl font-barlow">20%</span> <br />{" "}
