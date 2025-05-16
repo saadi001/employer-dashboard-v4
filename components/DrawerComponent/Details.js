@@ -84,7 +84,7 @@ const Details = () => {
       {/* skills  */}
       <div>
         <h5 className="text-sm text-headerColor font-semibold mb-2">Skills</h5>
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="flex items-center gap-2.5 flex-wrap">
           <p className="bg-gray-200 px-3 font-medium whitespace-nowrap py-2 rounded-full text-sm text-headerColor">
             Product Design
           </p>
