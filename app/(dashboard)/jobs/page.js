@@ -11,7 +11,9 @@ const Jobs = () => {
       {/* header  */}
       <div className="flex justify-between">
         <div>
-          <h3 className="text-xl font-publicSans text-headerColor">All Jobs</h3>
+          <h3 className="text-xl font-publicSans text-headerColor font-semibold">
+            All Jobs
+          </h3>
           <p className="text-sm text-textColor">
             Manage posted jobs and progress.
           </p>
