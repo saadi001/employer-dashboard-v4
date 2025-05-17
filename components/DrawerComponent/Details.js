@@ -13,6 +13,7 @@ const Details = () => {
           organizational skills and teamwork ability.
         </p>
       </div>
+
       {/* personal details  */}
       <div>
         <h5 className="text-sm text-headerColor font-semibold mb-1">
@@ -44,18 +45,6 @@ const Details = () => {
         </div>
       </div>
 
-      {/* Portfolio  */}
-      <div className="bg-primaryBackground/50 hover:bg-primaryBackground/80 flex items-center justify-between gap-2 rounded-xl px-4 py-4 cursor-pointer ">
-        <div className="text-slate-700 flex items-center gap-2  text-sm">
-          <Link01Icon size={20} strokeWidth={2} /> Portfolio
-        </div>
-        <LinkSquare01Icon
-          size={20}
-          strokeWidth={2}
-          className="text-slate-700 "
-        />
-      </div>
-
       {/* Education  */}
       <div className="">
         <h5 className="text-sm text-headerColor font-semibold mb-2">
@@ -79,6 +68,18 @@ const Details = () => {
             Daffodil International University
           </p>
         </div>
+      </div>
+
+      {/* Portfolio  */}
+      <div className="bg-primaryBackground/50 hover:bg-primaryBackground/80 flex items-center justify-between gap-2 rounded-xl px-4 py-4 cursor-pointer ">
+        <div className="text-slate-700 flex items-center gap-2  text-sm">
+          <Link01Icon size={20} strokeWidth={2} /> Portfolio
+        </div>
+        <LinkSquare01Icon
+          size={20}
+          strokeWidth={2}
+          className="text-slate-700 "
+        />
       </div>
 
       {/* skills  */}

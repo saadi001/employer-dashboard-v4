@@ -1,36 +1,24 @@
-// "use client";
+import { Document, pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
 
-// import workerSrc from "pdfjs-dist/build/pdf.worker.entry";
-// import { useState } from "react";
-// import { Document, Page, pdfjs } from "react-pdf";
-// import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-// import "react-pdf/dist/esm/Page/TextLayer.css";
-
-// pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
-
-// const Resume = () => {
-//   const [numPages, setNumPages] = useState(0);
-//   const fileUrl =
-//     "https://drive.google.com/file/d/1zt7O3EkAzoFdslUypYgbNUgYsYPvtj63/view";
-
-//   const onDocumentLoadSuccess = ({ numPages }) => {
-//     setNumPages(numPages);
-//   };
-//   return (
-//     <div className="w-full flex flex-col items-center text-sm text-textColor    ">
-//       <Document file={fileUrl} onLoadSuccess={onDocumentLoadSuccess}>
-//         {Array.from(new Array(numPages), (_, index) => (
-//           <Page key={`page_${index + 1}`} pageNumber={index + 1} width={800} />
-//         ))}
-//       </Document>
-//     </div>
-//   );
-// };
-
-// export default Resume;
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 const Resume = () => {
-  return <div>resume</div>;
+  return (
+    <div className="w-full border">
+      <Document
+        file={
+          "https://drive.google.com/file/d/1PdwumSX7c_R6vDbN1mGLYfvGS_pyIvoY/preview"
+        }
+      ></Document>
+      {/* <iframe
+        src="https://drive.google.com/file/d/1PdwumSX7c_R6vDbN1mGLYfvGS_pyIvoY/preview"
+        frameborder="0"
+        className="w-full h-80"
+      ></iframe> */}
+    </div>
+  );
 };
 
 export default Resume;

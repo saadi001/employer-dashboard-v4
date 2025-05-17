@@ -27,7 +27,7 @@ const JobCard = () => {
       {/* header  */}
       <div>
         <div className="mt-3">
-          <div className="flex">
+          <Link href={"/jobs/example"} className="flex ">
             <div className="flex items-center gap-3">
               <div className=" p-1 inline-block rounded-full bg-gray-100">
                 <Image src={react} alt="react" className="w-7" />
@@ -42,7 +42,8 @@ const JobCard = () => {
                 </p>
               </div>
             </div>
-          </div>
+            {/* <div></div> */}
+          </Link>
         </div>
         <div></div>
       </div>
