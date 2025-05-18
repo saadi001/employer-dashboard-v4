@@ -19,7 +19,7 @@ const CustomCheckbox = ({ id, label }) => {
             <use xlinkHref="#check-4" />
           </svg>
         </span>
-        <span className="text-sm">{label}</span>
+        <span className="text-sm text-headerColor">{label}</span>
       </label>
 
       {/* SVG Symbol must be globally available, preferably in _app.js or layout */}

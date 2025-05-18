@@ -3,6 +3,7 @@ import { educationsData } from "@/app/assets/data/dashboardDatas";
 import CustomCheckbox from "@/components/CustomCheckbox/CustomCheckbox";
 import CustomDateSelect from "@/components/CustomDateSelect/CustomDateSelect";
 import CustomEditableDropdown from "@/components/CustomEditableDropdown/CustomEditableDropdown";
+import CustomRadio from "@/components/CustomRadio/CustomRadio";
 import {
   Select,
   SelectContent,
@@ -19,6 +20,7 @@ import icon2 from "../../assets/icons/total cv.png";
 
 const PostJob = () => {
   const [value, setValue] = useState("");
+  const [selected, setSelected] = useState("");
   return (
     <div className="px-6 py-4 w-full flex gap-2">
       {/* left side  */}
@@ -35,8 +37,8 @@ const PostJob = () => {
 
         <form>
           {/* details  */}
-          <div className="mt-7 rounded-xl px-5 pt-4 pb-8 shadow-custom-base">
-            <h4 className="text-lg font-medium text-headerColor">Details</h4>
+          <div className="mt-7 rounded-xl px-5 pt-4 pb-8 shadow-custom-base ">
+            <h4 className="text-lg font-semibold text-headerColor">Details</h4>
             <div className="mt-5 flex flex-col gap-4">
               {/* title  */}
               <div className="space-y-2">
@@ -51,7 +53,7 @@ const PostJob = () => {
                   type="text"
                   id="title"
                   placeholder="Ex: Project Manager"
-                  className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600  focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
+                  className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600 focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
                 />
               </div>
               {/* category and deadline  */}
@@ -156,12 +158,14 @@ const PostJob = () => {
 
           {/* content  */}
           <div className="mt-5 rounded-xl p-5  shadow-custom-base">
-            <h4 className="text-lg font-medium text-headerColor">Content</h4>
+            <h4 className="text-lg font-semibold text-headerColor">Content</h4>
           </div>
           {/* Properties  */}
           <div className="mt-5 rounded-xl p-5 shadow-custom-base mb-24">
-            <h4 className="text-lg font-medium text-headerColor">Properties</h4>
-            <div className="mt-5 flex flex-col gap-5">
+            <h4 className="text-lg font-semibold text-headerColor">
+              Properties
+            </h4>
+            <div className="mt-5 flex flex-col gap-7">
               {/* education  */}
               <div className="grid grid-cols-2 gap-4">
                 {/* education level  */}
@@ -222,6 +226,26 @@ const PostJob = () => {
                   Work mode
                   <span className="text-red-600">*</span>
                 </label>
+                <div className="flex items-center gap-5">
+                  <CustomRadio
+                    id={"on-site"}
+                    label={"On site"}
+                    checked={selected === "on-site"}
+                    onChange={() => setSelected("on-site")}
+                  />
+                  <CustomRadio
+                    id={"remote"}
+                    label={"Remote"}
+                    checked={selected === "remote"}
+                    onChange={() => setSelected("remote")}
+                  />
+                  <CustomRadio
+                    id={"hybrid"}
+                    label={"Hybrid"}
+                    checked={selected === "hybrid"}
+                    onChange={() => setSelected("hybrid")}
+                  />
+                </div>
               </div>
             </div>
           </div>
