@@ -12,7 +12,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { TagsInput } from "@/components/ui/tagsInput";
+import { Money02Icon, MoneyExchange01Icon } from "hugeicons-react";
 import { Text } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import icon from "../../assets/icons/react icon.svg";
@@ -21,6 +24,9 @@ import icon2 from "../../assets/icons/total cv.png";
 const PostJob = () => {
   const [value, setValue] = useState("");
   const [selected, setSelected] = useState("");
+  const [tagsInputValue, setTagsInputValue] = useState([]);
+  const [selectedSalary, setSelectedSalary] = useState("");
+
   return (
     <div className="px-6 py-4 w-full flex gap-2">
       {/* left side  */}
@@ -53,7 +59,7 @@ const PostJob = () => {
                   type="text"
                   id="title"
                   placeholder="Ex: Project Manager"
-                  className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600 focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
+                  className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor placeholder:font-publicSans placeholder:text-sm"
                 />
               </div>
               {/* category and deadline  */}
@@ -165,7 +171,7 @@ const PostJob = () => {
             <h4 className="text-lg font-semibold text-headerColor">
               Properties
             </h4>
-            <div className="mt-5 flex flex-col gap-7">
+            <div className="mt-5 flex flex-col gap-5">
               {/* education  */}
               <div className="grid grid-cols-2 gap-4">
                 {/* education level  */}
@@ -245,6 +251,79 @@ const PostJob = () => {
                     checked={selected === "hybrid"}
                     onChange={() => setSelected("hybrid")}
                   />
+                </div>
+              </div>
+
+              {/* skills  */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="Skills"
+                  className="text-headerColor text-sm font-semibold "
+                >
+                  Skills
+                </label>
+                <TagsInput
+                  value={tagsInputValue}
+                  onValueChange={(value) => setTagsInputValue(value)}
+                  placeholder={
+                    "Ex: Problem solving. To add press Enter after writing."
+                  }
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label
+                  htmlFor="salary"
+                  className="text-headerColor text-sm font-semibold "
+                >
+                  Salary
+                </label>
+                <div>
+                  <AnimatePresence>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div
+                        onClick={() => setSelectedSalary("negotiable")}
+                        className={`flex flex-col text-center items-center justify-center border border-gray-300  py-5 rounded-lg cursor-pointer ${
+                          selectedSalary === "negotiable" &&
+                          "border-2 border-primaryColor"
+                        }`}
+                      >
+                        <MoneyExchange01Icon
+                          size={24}
+                          className="text-headerColor"
+                        />
+                        <p className="text-sm text-headerColor font-semibold">
+                          Negotiable
+                        </p>
+                      </div>
+
+                      <div
+                        onClick={() => setSelectedSalary("custom")}
+                        className={`flex flex-col text-center items-center justify-center border border-gray-300  py-5 rounded-lg cursor-pointer ${
+                          selectedSalary === "custom" &&
+                          "border-2 border-primaryColor"
+                        }`}
+                      >
+                        <Money02Icon size={24} />
+                        <p className="text-sm text-headerColor font-semibold">
+                          Custom
+                        </p>
+                      </div>
+                    </div>
+
+                    {selectedSalary === "custom" && (
+                      <motion.input
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                        type="text"
+                        id="title"
+                        placeholder="Ex: 15000-20000"
+                        className="w-full h-auto mt-5 border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor placeholder:font-publicSans placeholder:text-sm"
+                      />
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
