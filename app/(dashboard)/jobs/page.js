@@ -36,7 +36,7 @@ const Jobs = () => {
         <input
           type="text"
           placeholder="Search by job title"
-          className="w-full h-auto border rounded-lg flex-1 text-base  px-3 py-2.5 text-headerColor focus:outline-0 hover:border-gray-600  focus:border-gray-600 focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
+          className="w-full flex-1 h-auto border rounded-lg  text-base  px-3 py-2.5 text-headerColor focus:outline-0 hover:border-gray-600  focus:border-gray-600 focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
         />
         <div className="bg-gray-50 rounded-full p-2 text-textColor hover:text-headerColor hover:bg-gray-100 cursor-pointer">
           <EllipsisVertical size={20} strokeWidth={2} />
