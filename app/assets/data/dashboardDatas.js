@@ -152,3 +152,5 @@ export const sideDrawerData = [
     icon: <SquareGanttChart size={16} strokeWidth={2} />,
   },
 ];
+
+export const educationsData = ["SSC", "HSC", "Bachelor", "Masters", "Ph.D."];

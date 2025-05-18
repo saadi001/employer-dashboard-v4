@@ -72,6 +72,10 @@ module.exports = {
           "0 0 2px 0 rgba(145 158 171 / 0.2),0 12px 24px -4px rgba(145 158 171 / 0.12)",
         "custom-base":
           "0 0 2px 0 rgba(145 158 171 / 0.3),0 12px 24px -4px rgba(145 158 171 / 0.14)",
+        "custom-lg":
+          "0 0 2px 0 rgba(145 158 171 / 0.5),0 12px 24px -4px rgba(145 158 171 / 0.20)",
+        "custom-standard":
+          "0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)",
       },
     },
   },
