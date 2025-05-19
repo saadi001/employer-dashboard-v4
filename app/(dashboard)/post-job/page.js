@@ -168,7 +168,7 @@ const PostJob = () => {
             <h4 className="text-lg font-semibold text-headerColor">Content</h4>
           </div>
           {/* Properties  */}
-          <div className="mt-5 rounded-xl p-5 shadow-custom-base mb-24">
+          <div className="mt-5 rounded-xl p-5 shadow-custom-base ">
             <h4 className="text-lg font-semibold text-headerColor">
               Properties
             </h4>
@@ -279,6 +279,7 @@ const PostJob = () => {
                   className="text-headerColor text-sm font-semibold "
                 >
                   Salary
+                  <span className="text-red-600">*</span>
                 </label>
                 <div>
                   <AnimatePresence>
@@ -306,7 +307,7 @@ const PostJob = () => {
                           "border-2 border-primaryColor"
                         }`}
                       >
-                        <Money02Icon size={24} />
+                        <Money02Icon size={24} className="text-headerColor" />
                         <p className="text-sm text-headerColor font-semibold">
                           Custom
                         </p>
@@ -338,7 +339,48 @@ const PostJob = () => {
                 </label>
                 <CustomQuestion />
               </div>
+
+              {/* benefits  */}
+              <div className="space-y-2">
+                <label
+                  htmlFor=""
+                  className="text-headerColor text-sm font-semibold block "
+                >
+                  Benefits
+                </label>
+                <div className="grid grid-cols-2 gap-1">
+                  <CustomCheckbox
+                    id={"transportation"}
+                    label={"Transportation"}
+                  />
+                  <CustomCheckbox id={"free-parking"} label={"Free parking"} />
+                  <CustomCheckbox
+                    id={"bonus-commission"}
+                    label={"Bonus commission"}
+                  />
+                  <CustomCheckbox id={"travel"} label={"Travel"} />
+                  <CustomCheckbox
+                    id={"device-support"}
+                    label={"Device support"}
+                  />
+                  <CustomCheckbox id={"Lunch"} label={"Lunch"} />
+                  <CustomCheckbox id={"training"} label={"Training"} />
+                  <CustomCheckbox
+                    id={"health-insurance"}
+                    label={"Health insurance"}
+                  />
+                  <CustomCheckbox
+                    id={"flexible-work-schedule"}
+                    label={"Flexible work schedule"}
+                  />
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="w-full flex items-center justify-center mt-8 mb-12">
+            <button className="text-sm px-5 py-2 rounded-lg bg-primaryColor text-gray-50 font-semibold hover:bg-primaryHover">
+              POST
+            </button>
           </div>
         </form>
       </div>
