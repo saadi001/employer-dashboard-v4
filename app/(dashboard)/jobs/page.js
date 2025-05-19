@@ -4,6 +4,7 @@ import CustomTab from "@/components/CustomTab/CustomTab";
 import JobCard from "@/components/JobCard/JobCard";
 import { PlusSignCircleIcon } from "hugeicons-react";
 import { EllipsisVertical } from "lucide-react";
+import Link from "next/link";
 
 const Jobs = () => {
   return (
@@ -18,9 +19,12 @@ const Jobs = () => {
             Manage posted jobs and progress.
           </p>
         </div>
-        <button className="bg-primaryColor hover:bg-primaryHover hover:shadow-md hover:shadow-primaryHover/30 text-sm h-fit px-3 py-2 text-gray-50 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-300s ">
+        <Link
+          href={"/post-job"}
+          className="bg-primaryColor hover:bg-primaryHover hover:shadow-md hover:shadow-primaryHover/30 text-sm h-fit px-3 py-2 text-gray-50 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-300s "
+        >
           <PlusSignCircleIcon size={18} strokeWidth={2.5} /> POST JOB
-        </button>
+        </Link>
       </div>
       {/* tab  */}
       <CustomTab

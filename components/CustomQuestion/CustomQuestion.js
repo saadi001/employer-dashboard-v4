@@ -41,7 +41,7 @@ const CustomQuestion = () => {
             <input
               type="text"
               id="title"
-              placeholder="Ex: Project Manager"
+              placeholder="Ex: Do you have laptop?"
               className="w-full h-auto border rounded-lg rounded-tr-none rounded-br-none flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor placeholder:font-publicSans placeholder:text-sm"
             />
             {i === 0 ? (

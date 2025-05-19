@@ -24,4 +24,34 @@ export const SidebarMenu = [
       },
     ],
   },
+  {
+    title: "EMPLOYER PORTAL",
+    menus: [
+      {
+        icon: "ynsswhvj",
+        name: "Payment History",
+        link: "/payment-history",
+      },
+      {
+        icon: "dygfbwwx",
+        name: "Team",
+        link: "/team",
+      },
+    ],
+  },
+  {
+    title: "HELP CENTER",
+    menus: [
+      {
+        icon: "ynsswhvj",
+        name: "User Guide",
+        link: "/user-guide",
+      },
+      {
+        icon: "dygfbwwx",
+        name: "Get Help",
+        link: "/get-help",
+      },
+    ],
+  },
 ];
