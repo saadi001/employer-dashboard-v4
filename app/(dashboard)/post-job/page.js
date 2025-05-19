@@ -3,6 +3,7 @@ import { educationsData } from "@/app/assets/data/dashboardDatas";
 import CustomCheckbox from "@/components/CustomCheckbox/CustomCheckbox";
 import CustomDateSelect from "@/components/CustomDateSelect/CustomDateSelect";
 import CustomEditableDropdown from "@/components/CustomEditableDropdown/CustomEditableDropdown";
+import CustomQuestion from "@/components/CustomQuestion/CustomQuestion";
 import CustomRadio from "@/components/CustomRadio/CustomRadio";
 import {
   Select,
@@ -261,6 +262,7 @@ const PostJob = () => {
                   className="text-headerColor text-sm font-semibold "
                 >
                   Skills
+                  <span className="text-red-600">*</span>
                 </label>
                 <TagsInput
                   value={tagsInputValue}
@@ -270,7 +272,7 @@ const PostJob = () => {
                   }
                 />
               </div>
-
+              {/* salary  */}
               <div className="space-y-2">
                 <label
                   htmlFor="salary"
@@ -313,9 +315,9 @@ const PostJob = () => {
 
                     {selectedSalary === "custom" && (
                       <motion.input
-                        initial={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
+                        exit={{ opacity: 0, y: -6 }}
                         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                         type="text"
                         id="title"
@@ -325,6 +327,16 @@ const PostJob = () => {
                     )}
                   </AnimatePresence>
                 </div>
+              </div>
+              {/* custom question  */}
+              <div className="space-y-2">
+                <label
+                  htmlFor=""
+                  className="text-headerColor text-sm font-semibold block "
+                >
+                  Custom Question
+                </label>
+                <CustomQuestion />
               </div>
             </div>
           </div>
