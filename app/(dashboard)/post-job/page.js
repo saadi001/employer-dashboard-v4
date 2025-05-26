@@ -5,6 +5,7 @@ import CustomDateSelect from "@/components/CustomDateSelect/CustomDateSelect";
 import CustomEditableDropdown from "@/components/CustomEditableDropdown/CustomEditableDropdown";
 import CustomQuestion from "@/components/CustomQuestion/CustomQuestion";
 import CustomRadio from "@/components/CustomRadio/CustomRadio";
+import CustomToggle from "@/components/CustomToggle/CustomToggle";
 import {
   Select,
   SelectContent,
@@ -377,9 +378,15 @@ const PostJob = () => {
               </div>
             </div>
           </div>
-          <div className="w-full flex items-center justify-center mt-8 mb-12">
-            <button className="text-sm px-5 py-2 rounded-lg bg-primaryColor text-gray-50 font-semibold hover:bg-primaryHover">
-              POST
+          <div className="w-full flex items-center justify-between mt-8 mb-12 px-4">
+            <div className="flex items-center gap-3">
+              <CustomToggle />{" "}
+              <span className="inline-block text-headerColor font-semibold text-sm">
+                Draft
+              </span>
+            </div>
+            <button className="text-sm px-4 py-2 rounded-lg bg-primaryColor text-gray-50 font-semibold hover:bg-primaryHover">
+              PUBLISH
             </button>
           </div>
         </form>

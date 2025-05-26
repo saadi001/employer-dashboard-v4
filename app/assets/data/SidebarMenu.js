@@ -43,12 +43,12 @@ export const SidebarMenu = [
     title: "HELP CENTER",
     menus: [
       {
-        icon: "ynsswhvj",
+        icon: "kydcudfv",
         name: "User Guide",
         link: "/user-guide",
       },
       {
-        icon: "dygfbwwx",
+        icon: "etrhcwgm",
         name: "Get Help",
         link: "/get-help",
       },
