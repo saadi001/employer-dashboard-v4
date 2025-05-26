@@ -5,6 +5,7 @@ import CustomDateSelect from "@/components/CustomDateSelect/CustomDateSelect";
 import CustomEditableDropdown from "@/components/CustomEditableDropdown/CustomEditableDropdown";
 import CustomQuestion from "@/components/CustomQuestion/CustomQuestion";
 import CustomRadio from "@/components/CustomRadio/CustomRadio";
+import CustomTextEditor from "@/components/CustomTextEditor/CustomTextEditor";
 import CustomToggle from "@/components/CustomToggle/CustomToggle";
 import {
   Select,
@@ -177,6 +178,7 @@ const PostJob = () => {
           {/* content  */}
           <div className="mt-5 rounded-xl p-5  shadow-custom-base">
             <h4 className="text-lg font-semibold text-headerColor">Content</h4>
+            <CustomTextEditor />
           </div>
 
           {/* Properties  */}
