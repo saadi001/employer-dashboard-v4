@@ -15,13 +15,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TagsInput } from "@/components/ui/tagsInput";
-import { Money02Icon, MoneyExchange01Icon } from "hugeicons-react";
+import {
+  ArrowRight01Icon,
+  Money02Icon,
+  MoneyExchange01Icon,
+} from "hugeicons-react";
 import { Text } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import icon from "../../assets/icons/react icon.svg";
 import icon2 from "../../assets/icons/total cv.png";
+import basicPayment from "../../assets/payment icon/basic.webp";
+import bulkJob from "../../assets/payment icon/bulk job post.webp";
+import premiumPayment from "../../assets/payment icon/premium.webp";
 
 const PostJob = () => {
   const [value, setValue] = useState("");
@@ -124,8 +131,10 @@ const PostJob = () => {
                   />
                 </div>
               </div>
-              {/* vacancy  */}
+
+              {/* vacancy and experience  */}
               <div className="grid grid-cols-2 gap-3">
+                {/* vacancy  */}
                 <div className="space-y-2">
                   <label
                     htmlFor="vacancy"
@@ -143,6 +152,7 @@ const PostJob = () => {
                     className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600  focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
                   />
                 </div>
+                {/* experience  */}
                 <div className="space-y-2">
                   <label
                     htmlFor="experience"
@@ -168,6 +178,7 @@ const PostJob = () => {
           <div className="mt-5 rounded-xl p-5  shadow-custom-base">
             <h4 className="text-lg font-semibold text-headerColor">Content</h4>
           </div>
+
           {/* Properties  */}
           <div className="mt-5 rounded-xl p-5 shadow-custom-base ">
             <h4 className="text-lg font-semibold text-headerColor">
@@ -378,6 +389,128 @@ const PostJob = () => {
               </div>
             </div>
           </div>
+
+          {/* payment  */}
+          <div className="mt-5 rounded-xl p-5 shadow-custom-base">
+            <h4 className="text-lg font-semibold text-headerColor">Payment</h4>
+            {/* plan and card  */}
+            <div className="mt-3">
+              <label
+                htmlFor=""
+                className="text-headerColor text-sm font-semibold "
+              >
+                Choose your plan, pay & copy transaction ID
+              </label>
+
+              <div className="grid grid-cols-3 gap-4 pt-3">
+                <div className="border rounded-xl px-3 py-2">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={basicPayment}
+                      alt="basic payment"
+                      className="w-9"
+                    />
+                    <div className="">
+                      <h5 className="text-headerColor">Basic</h5>
+                      <p className="bg-primaryColor text-[11px] text-gray-100 rounded px-1">
+                        800 BDT
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <ul>
+                      <li className="text-sm flex gap-1">
+                        <ArrowRight01Icon size={18} />{" "}
+                        <p className="flex-1">You will get 200-250 CVs</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="border rounded-xl px-3 py-2">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={premiumPayment}
+                      alt="basic payment"
+                      className="w-10"
+                    />
+                    <div className="">
+                      <h5 className="text">Premium</h5>
+                      <p className="bg-primaryColor text-[11px] text-gray-100 rounded px-1 w-fit">
+                        1500 BDT
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <ul>
+                      <li className="text-sm flex gap-1">
+                        <ArrowRight01Icon size={18} />
+                        <p className="flex-1">You will get 500-550 CVs</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="border rounded-xl px-3 py-2">
+                  <div className="flex items-center gap-2">
+                    <Image src={bulkJob} alt="basic payment" className="w-9" />
+                    <div className="">
+                      <h5 className="text">Bulk Job Post</h5>
+                      <p className="bg-primaryColor text-[11px] text-gray-100 rounded px-1 w-fit">
+                        4000 BDT
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <ul>
+                      <li className="text-sm flex gap-1">
+                        <ArrowRight01Icon size={18} />
+                        <p className="flex-1">
+                          You will get 300-350 CVs per job.
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* bkash no and transaction id  */}
+            <div className="grid grid-cols-2 gap-4 mt-5">
+              <div className="space-y-2 ">
+                <label
+                  htmlFor="bkashNumber"
+                  className="text-headerColor text-sm font-semibold "
+                >
+                  Bkash Number
+                  {/* <span className="text-red-600">*</span> */}
+                </label>
+                <input
+                  type="number"
+                  id="bkashNumber"
+                  placeholder="Ex: 018365*****"
+                  min={1}
+                  max={999}
+                  className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600  focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
+                />
+              </div>
+              <div className="space-y-2 ">
+                <label
+                  htmlFor="transactionID"
+                  className="text-headerColor text-sm font-semibold "
+                >
+                  Transaction ID
+                  {/* <span className="text-red-600">*</span> */}
+                </label>
+                <input
+                  type="text"
+                  id="transactionID"
+                  placeholder="Transaction ID"
+                  min={1}
+                  max={999}
+                  className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600  focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="w-full flex items-center justify-between mt-8 mb-12 px-4">
             <div className="flex items-center gap-3">
               <CustomToggle />{" "}
