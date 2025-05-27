@@ -1,8 +1,26 @@
 "use client";
 
+import BulletList from "@tiptap/extension-bullet-list";
+import Image from "@tiptap/extension-image";
+import Link from "@tiptap/extension-link";
+import ListItem from "@tiptap/extension-list-item";
+import OrderedList from "@tiptap/extension-ordered-list";
+import TextAlign from "@tiptap/extension-text-align";
+import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { Bold, Italic } from "lucide-react";
+import { TextUnderlineIcon } from "hugeicons-react";
+import {
+  AlignCenter,
+  AlignJustify,
+  AlignLeft,
+  AlignRight,
+  Bold,
+  Italic,
+  List,
+  ListOrdered,
+  Strikethrough,
+} from "lucide-react";
 import { useEffect } from "react";
 import {
   Select,
@@ -18,7 +36,18 @@ const CustomTextEditor = ({ value }) => {
   };
 
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit.configure({ heading: { levels: [1, 2, 3, 4, 5, 6] } }),
+      Underline,
+      Link.configure({ openOnClick: false }),
+      Image,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+      BulletList,
+      ListItem,
+      OrderedList,
+    ],
     content: value || "<p></p>",
     onUpdate({ editor }) {
       onChange(editor.getHTML());
@@ -86,6 +115,8 @@ const CustomTextEditor = ({ value }) => {
             </SelectItem>
           </SelectContent>
         </Select>
+
+        {/* divider  */}
         <div className="border-l h-5"></div>
         <button
           type="button"
@@ -111,15 +142,101 @@ const CustomTextEditor = ({ value }) => {
         </button>
         <button
           type="button"
-          onClick={() => editor.chain().focus().toggleItalic().run()}
+          onClick={() => editor.chain().focus().toggleUnderline().run()}
           className={` p-1.5 rounded-md  ${
-            editor.isActive("italic")
+            editor.isActive("underline")
               ? "bg-primaryColor text-gray-50"
               : "hover:bg-gray-100 text-headerColor"
           }`}
         >
-          <Italic size={16} className="" />
+          <TextUnderlineIcon size={16} className="" />
         </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleStrike().run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive("strike")
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <Strikethrough size={16} className="" />
+        </button>
+
+        {/* divider  */}
+        <div className="border-l h-5"></div>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleBulletList().run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive("bulletList")
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <List size={16} className="" />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleOrderedList().run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive("orderedList")
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <ListOrdered size={16} className="" />
+        </button>
+
+        {/* divider  */}
+        <div className="border-l h-5"></div>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().setTextAlign("left").run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive({ textAlign: "left" })
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <AlignLeft size={16} className="" />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().setTextAlign("center").run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive({ textAlign: "center" })
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <AlignCenter size={16} className="" />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().setTextAlign("right").run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive({ textAlign: "right" })
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <AlignRight size={16} className="" />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().setTextAlign("justify").run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive({ textAlign: "justify" })
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <AlignJustify size={16} className="" />
+        </button>
+
+        {/* divider  */}
+        <div className="border-l h-5"></div>
       </div>
 
       {/* editor  */}
