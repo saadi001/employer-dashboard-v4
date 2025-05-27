@@ -176,7 +176,7 @@ const PostJob = () => {
           </div>
 
           {/* content  */}
-          <div className="mt-5 rounded-xl p-5  shadow-custom-base">
+          <div className="mt-5 rounded-xl p-5  shadow-custom-base overflow-hidden">
             <h4 className="text-lg font-semibold text-headerColor">Content</h4>
             <CustomTextEditor />
           </div>
@@ -514,12 +514,8 @@ const PostJob = () => {
           </div>
 
           <div className="w-full flex items-center justify-between mt-8 mb-12 px-4">
-            <div className="flex items-center gap-3">
-              <CustomToggle />{" "}
-              <span className="inline-block text-headerColor font-semibold text-sm">
-                Draft
-              </span>
-            </div>
+            <CustomToggle label={"Draft"} />
+
             <button className="text-sm px-4 py-2 rounded-lg bg-primaryColor text-gray-50 font-semibold hover:bg-primaryHover">
               PUBLISH
             </button>

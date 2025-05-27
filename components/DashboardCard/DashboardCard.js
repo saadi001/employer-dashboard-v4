@@ -1,7 +1,8 @@
-import { Hired } from "@/app/assets/data/svgComponent/svgComponent";
-import Image from "next/image";
-import totalCV from "../../app/assets/icons/total cv.png";
-import totalPost from "../../app/assets/icons/total post.png";
+import {
+  Hired,
+  TotalCVIcon,
+  TotalJobIcon,
+} from "@/app/assets/data/svgComponent/svgComponent";
 
 const DashboardCard = () => {
   return (
@@ -14,12 +15,12 @@ const DashboardCard = () => {
           Total job posted
         </p>
         <div className="absolute -right-[90px] -top-[44px] w-[160px] h-[160px] -rotate-45 rounded-3xl p-5 bg-yellow-50 -z-20">
-          {/* <TotalJobIcon className={"rotate-45"} /> */}
-          <Image
+          <TotalJobIcon className={"rotate-45"} />
+          {/* <Image
             src={totalPost}
             alt="post"
             className="object-cover rotate-45"
-          />
+          /> */}
         </div>
       </div>
 
@@ -31,8 +32,13 @@ const DashboardCard = () => {
           CV received in total
         </p>
         <div className="absolute -right-[90px] -top-[44px] w-[160px] h-[160px] -rotate-45 rounded-3xl p-5 bg-teal-50 -z-20">
-          {/* <TotalCVIcon className={"rotate-45"} /> */}
-          <Image src={totalCV} alt="post" className="object-cover rotate-45" />
+          <TotalCVIcon className={"rotate-45"} />
+          {/* <Image
+            src={totalCV}
+            alt="post"
+            className="object-cover rotate-45 w-8"
+            quality={100}
+          /> */}
         </div>
       </div>
 

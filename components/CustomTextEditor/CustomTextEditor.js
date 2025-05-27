@@ -9,7 +9,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { TextUnderlineIcon } from "hugeicons-react";
+import { Link01Icon, TextUnderlineIcon } from "hugeicons-react";
 import {
   AlignCenter,
   AlignJustify,
@@ -20,8 +20,9 @@ import {
   List,
   ListOrdered,
   Strikethrough,
+  Unlink,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import {
   Select,
   SelectContent,
@@ -39,7 +40,7 @@ const CustomTextEditor = ({ value }) => {
     extensions: [
       StarterKit.configure({ heading: { levels: [1, 2, 3, 4, 5, 6] } }),
       Underline,
-      Link.configure({ openOnClick: false }),
+
       Image,
       TextAlign.configure({
         types: ["heading", "paragraph"],
@@ -47,12 +48,112 @@ const CustomTextEditor = ({ value }) => {
       BulletList,
       ListItem,
       OrderedList,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        defaultProtocol: "https",
+        protocols: ["http", "https"],
+        isAllowedUri: (url, ctx) => {
+          try {
+            // construct URL
+            const parsedUrl = url.includes(":")
+              ? new URL(url)
+              : new URL(`${ctx.defaultProtocol}://${url}`);
+
+            // use default validation
+            if (!ctx.defaultValidate(parsedUrl.href)) {
+              return false;
+            }
+
+            // disallowed protocols
+            const disallowedProtocols = ["ftp", "file", "mailto"];
+            const protocol = parsedUrl.protocol.replace(":", "");
+
+            if (disallowedProtocols.includes(protocol)) {
+              return false;
+            }
+
+            // only allow protocols specified in ctx.protocols
+            const allowedProtocols = ctx.protocols.map((p) =>
+              typeof p === "string" ? p : p.scheme
+            );
+
+            if (!allowedProtocols.includes(protocol)) {
+              return false;
+            }
+
+            // disallowed domains
+            const disallowedDomains = [
+              "example-phishing.com",
+              "malicious-site.net",
+            ];
+            const domain = parsedUrl.hostname;
+
+            if (disallowedDomains.includes(domain)) {
+              return false;
+            }
+
+            // all checks have passed
+            return true;
+          } catch {
+            return false;
+          }
+        },
+        shouldAutoLink: (url) => {
+          try {
+            // construct URL
+            const parsedUrl = url.includes(":")
+              ? new URL(url)
+              : new URL(`https://${url}`);
+
+            // only auto-link if the domain is not in the disallowed list
+            const disallowedDomains = [
+              "example-no-autolink.com",
+              "another-no-autolink.com",
+            ];
+            const domain = parsedUrl.hostname;
+
+            return !disallowedDomains.includes(domain);
+          } catch {
+            return false;
+          }
+        },
+      }),
     ],
     content: value || "<p></p>",
     onUpdate({ editor }) {
       onChange(editor.getHTML());
     },
   });
+
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes("link").href;
+    const url = window.prompt("URL", previousUrl);
+
+    // cancelled
+    if (url === null) {
+      return;
+    }
+
+    // empty
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+
+      return;
+    }
+
+    // update link
+    try {
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: url })
+        .run();
+    } catch (e) {
+      alert(e.message);
+    }
+  }, [editor]);
 
   useEffect(() => {
     if (editor && value !== editor.getHTML()) {
@@ -61,6 +162,18 @@ const CustomTextEditor = ({ value }) => {
   }, [editor, value]);
 
   if (!editor) return null;
+
+  // const setLink = () => {
+  //   const url = window.prompt("Enter URL");
+  //   if (url) {
+  //     editor
+  //       .chain()
+  //       .focus()
+  //       .extendMarkRange("link")
+  //       .setLink({ href: url })
+  //       .run();
+  //   }
+  // };
 
   return (
     <div className="space-y-1 border rounded-md overflow-hidden">
@@ -76,21 +189,35 @@ const CustomTextEditor = ({ value }) => {
             <SelectValue placeholder="" />
           </SelectTrigger>
           <SelectContent className={""}>
-            <SelectItem value={"paragraph"}>Paragraph</SelectItem>
+            <SelectItem
+              value={"paragraph"}
+              onClick={() => editor.chain().focus().setParagraph().run()}
+            >
+              Paragraph
+            </SelectItem>
             <SelectItem
               value={"heading1"}
+              onClick={() =>
+                editor.chain().focus().toggleHeading({ level: 1 }).run()
+              }
               className={"text-2xl font-semibold h-8"}
             >
               Heading 1
             </SelectItem>
             <SelectItem
               value={"heading2"}
+              onClick={() =>
+                editor.chain().focus().toggleHeading({ level: 2 }).run()
+              }
               className={"text-xl font-semibold h-8"}
             >
               Heading 2
             </SelectItem>
             <SelectItem
               value={"heading3"}
+              onClick={() =>
+                editor.chain().focus().toggleHeading({ level: 3 }).run()
+              }
               className={"text-lg font-semibold h-8"}
             >
               Heading 3
@@ -237,6 +364,25 @@ const CustomTextEditor = ({ value }) => {
 
         {/* divider  */}
         <div className="border-l h-5"></div>
+        <button
+          type="button"
+          onClick={setLink}
+          className={`p-1.5 rounded-md ${
+            editor.isActive("link")
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <Link01Icon size={16} className="" />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().unsetLink().run()}
+          disabled={!editor.isActive("link")}
+          className={` p-1.5 rounded-md  hover:bg-gray-100`}
+        >
+          <Unlink size={16} className="" />
+        </button>
       </div>
 
       {/* editor  */}
