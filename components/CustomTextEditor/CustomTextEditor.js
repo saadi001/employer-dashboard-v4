@@ -2,7 +2,7 @@
 
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { Bold } from "lucide-react";
+import { Bold, Italic } from "lucide-react";
 import { useEffect } from "react";
 import {
   Select,
@@ -90,11 +90,35 @@ const CustomTextEditor = ({ value }) => {
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={`border p-1.5 rounded-md  ${
-            editor.isActive("bold") ? "bg-primaryColor" : ""
+          className={` p-1.5 rounded-md  ${
+            editor.isActive("bold")
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
           }`}
         >
-          <Bold size={16} className="text-headerColor" />
+          <Bold size={16} className="" />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleItalic().run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive("italic")
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <Italic size={16} className="" />
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleItalic().run()}
+          className={` p-1.5 rounded-md  ${
+            editor.isActive("italic")
+              ? "bg-primaryColor text-gray-50"
+              : "hover:bg-gray-100 text-headerColor"
+          }`}
+        >
+          <Italic size={16} className="" />
         </button>
       </div>
 
