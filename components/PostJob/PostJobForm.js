@@ -1,6 +1,7 @@
 "use client";
 
 import { educationsData } from "@/app/assets/data/dashboardDatas";
+import { MenuForPostJOb } from "@/app/assets/data/SidebarMenu";
 import {
   ArrowRight01Icon,
   Money02Icon,
@@ -9,7 +10,7 @@ import {
 import { Text } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import icon from "../../app/assets/icons/react icon.svg";
 import icon2 from "../../app/assets/icons/total cv.png";
 import basicPayment from "../../app/assets/payment icon/basic.webp";
@@ -20,7 +21,6 @@ import CustomDateSelect from "../CustomDateSelect/CustomDateSelect";
 import CustomEditableDropdown from "../CustomEditableDropdown/CustomEditableDropdown";
 import CustomQuestion from "../CustomQuestion/CustomQuestion";
 import CustomRadio from "../CustomRadio/CustomRadio";
-import CustomTextEditor from "../CustomTextEditor/CustomTextEditor";
 import CustomToggle from "../CustomToggle/CustomToggle";
 import {
   Select,
@@ -34,14 +34,82 @@ import { TagsInput } from "../ui/tagsInput";
 
 const PostJobForm = () => {
   const [value, setValue] = useState("");
+  const [activeSection, setActiveSection] = useState("details");
   const [selected, setSelected] = useState("");
   const [tagsInputValue, setTagsInputValue] = useState([]);
   const [selectedSalary, setSelectedSalary] = useState("");
+  const contentRef = useRef(null);
+  const sectionRefs = useRef({});
+
+  useEffect(() => {
+    console.log("active section", activeSection);
+    const observerOptions = {
+      root: contentRef.current,
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    Object.values(sectionRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, [activeSection]);
+
+  // const scrollToSection = (sectionId) => {
+  //   const element = sectionRefs.current[sectionId];
+  //   const container = contentRef.current;
+
+  //   if (element && container) {
+  //     // Get bounding rects
+  //     const containerRect = container.getBoundingClientRect();
+  //     const elementRect = element.getBoundingClientRect();
+
+  //     // Calculate the element's position relative to the scrollable container
+  //     const offset = elementRect.top - containerRect.top;
+  //     console.log(offset);
+  //     // Scroll to that position minus 50px
+  //     container.scrollTo({
+  //       top: container.scrollTop + offset - 50,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
+
+  const scrollToSection = (sectionId) => {
+    const element = sectionRefs.current[sectionId];
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const setSectionRef = (id) => (el) => {
+    sectionRefs.current[id] = el;
+  };
 
   return (
     <div className="px-6 py-4 w-full flex gap-2">
       {/* left side  */}
-      <div className="flex-1 px-8">
+      <div
+        ref={contentRef}
+        className="flex-1 w-[75%]  mr-[25%] px-8 overflow-y-auto"
+      >
         {/* header  */}
         <div>
           <h3 className="text-2xl font-publicSans text-headerColor font-semibold">
@@ -54,7 +122,11 @@ const PostJobForm = () => {
 
         <form>
           {/* details  */}
-          <div className="mt-7 rounded-xl px-5 pt-4 pb-8 shadow-custom-base ">
+          <div
+            id="description"
+            ref={setSectionRef("description")}
+            className="mt-7 rounded-xl px-5 pt-4 pb-8 shadow-custom-base "
+          >
             <h4 className="text-lg font-semibold text-headerColor">Details</h4>
             <div className="mt-5 flex flex-col gap-4">
               {/* title  */}
@@ -177,9 +249,13 @@ const PostJobForm = () => {
           </div>
 
           {/* content  */}
-          <div className="mt-5 rounded-xl p-5  shadow-custom-base overflow-hidden">
+          <div
+            id="content"
+            ref={setSectionRef("content")}
+            className="mt-5 rounded-xl p-5 space-y-4 shadow-custom-base overflow-hidden"
+          >
             <h4 className="text-lg font-semibold text-headerColor">Content</h4>
-            <CustomTextEditor />
+            {/* <CustomTextEditor /> */}
           </div>
 
           {/* Properties  */}
@@ -514,6 +590,7 @@ const PostJobForm = () => {
             </div>
           </div>
 
+          {/* submit button  */}
           <div className="w-full flex items-center justify-between mt-8 mb-12 px-4">
             <CustomToggle label={"Draft"} />
 
@@ -525,19 +602,26 @@ const PostJobForm = () => {
       </div>
 
       {/* right side  */}
-      <div className="w-[25%] py-1 h-fit">
+      <div className="w-[20%] py-1 h-fit fixed right-0 top-20">
         <p className="text-sm font-light flex items-center gap-2 text-slate-600">
           {" "}
           <Text size={16} /> On this page
         </p>
-        <div className="text-sm mt-5 space-y-2.5 border-l-[0.5px] border-dashed text-slate-500 ">
-          <p className="pl-5  leading-tight relative text-slate-800 font-medium">
-            Description
-            <span className="w-[3px] absolute top-0 -left-[2px] bottom-0 border-none bg-slate-800"></span>
-          </p>
-          <p className="pl-5 leading-tight">Content</p>
-          <p className="pl-5 leading-tight">Properties</p>
-          <p className="pl-5 leading-tight">Payment</p>
+        <div className="text-sm mt-5 space-y-3 border-l-[0.5px] border-dashed text-slate-500 ">
+          {MenuForPostJOb.map((menu, i) => (
+            <p
+              onClick={() => scrollToSection(menu.id)}
+              className={`pl-5 leading-tight relative cursor-pointer ${
+                i === 0 ? "text-slate-800 font-medium" : ""
+              }`}
+              key={menu?.id}
+            >
+              {menu?.label}
+              {activeSection === menu.id && (
+                <span className="w-[3px] absolute top-0 -left-[2px] bottom-0 border-none bg-slate-800"></span>
+              )}
+            </p>
+          ))}
         </div>
       </div>
     </div>

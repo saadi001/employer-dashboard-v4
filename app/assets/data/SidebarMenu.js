@@ -55,3 +55,22 @@ export const SidebarMenu = [
     ],
   },
 ];
+
+export const MenuForPostJOb = [
+  {
+    id: "description",
+    label: "Description",
+  },
+  {
+    id: "content",
+    label: "Content",
+  },
+  {
+    id: "properties",
+    label: "Properties",
+  },
+  {
+    id: "payment",
+    label: "Payment",
+  },
+];
