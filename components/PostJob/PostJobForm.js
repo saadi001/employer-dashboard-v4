@@ -19,6 +19,7 @@ import premiumPayment from "../../app/assets/payment icon/premium.webp";
 import CustomCheckbox from "../CustomCheckbox/CustomCheckbox";
 import CustomDateSelect from "../CustomDateSelect/CustomDateSelect";
 import CustomEditableDropdown from "../CustomEditableDropdown/CustomEditableDropdown";
+import CustomInput from "../CustomInput/CustomInput";
 import CustomQuestion from "../CustomQuestion/CustomQuestion";
 import CustomRadio from "../CustomRadio/CustomRadio";
 import CustomToggle from "../CustomToggle/CustomToggle";
@@ -69,26 +70,6 @@ const PostJobForm = () => {
     return () => observer.disconnect();
   }, [activeSection]);
 
-  // const scrollToSection = (sectionId) => {
-  //   const element = sectionRefs.current[sectionId];
-  //   const container = contentRef.current;
-
-  //   if (element && container) {
-  //     // Get bounding rects
-  //     const containerRect = container.getBoundingClientRect();
-  //     const elementRect = element.getBoundingClientRect();
-
-  //     // Calculate the element's position relative to the scrollable container
-  //     const offset = elementRect.top - containerRect.top;
-  //     console.log(offset);
-  //     // Scroll to that position minus 50px
-  //     container.scrollTo({
-  //       top: container.scrollTop + offset - 50,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
-
   const scrollToSection = (sectionId) => {
     const element = sectionRefs.current[sectionId];
     if (element) {
@@ -130,21 +111,7 @@ const PostJobForm = () => {
             <h4 className="text-lg font-semibold text-headerColor">Details</h4>
             <div className="mt-5 flex flex-col gap-4">
               {/* title  */}
-              <div className="space-y-2">
-                <label
-                  htmlFor="title"
-                  className="text-headerColor text-sm font-semibold "
-                >
-                  Title
-                  <span className="text-red-600">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="title"
-                  placeholder="Ex: Project Manager"
-                  className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor placeholder:font-publicSans placeholder:text-sm"
-                />
-              </div>
+              <CustomInput id={"title"} label={"Tittle"} required={true} />
               {/* category and deadline  */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-2">
