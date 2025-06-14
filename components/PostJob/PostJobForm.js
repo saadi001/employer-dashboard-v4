@@ -1,6 +1,9 @@
 "use client";
 
-import { educationsData } from "@/app/assets/data/dashboardDatas";
+import {
+  departmentSubjectData,
+  educationsData,
+} from "@/app/assets/data/dashboardDatas";
 import { MenuForPostJOb } from "@/app/assets/data/SidebarMenu";
 import { createJobSchema } from "@/Scema/CreateJobSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -181,6 +184,7 @@ const PostJobForm = () => {
                             content={"Select Deadline"}
                             className={"!h-12 !w-full"}
                             field={field}
+                            disablePrevious={true}
                           />
                           <FormMessage />
                         </FormItem>
@@ -263,11 +267,19 @@ const PostJobForm = () => {
                     >
                       Education Level
                     </label>
-                    <CustomEditableDropdown
-                      options={educationsData}
-                      placeholder={"Select or write degree"}
-                      onChange={(value) => setValue(value)}
-                      value={value}
+                    <FormField
+                      control={form.control}
+                      name="education"
+                      render={({ field }) => (
+                        <FormItem>
+                          <CustomEditableDropdown
+                            options={educationsData}
+                            placeholder={"Select or write degree"}
+                            onChange={(value) => field.onChange(value)}
+                            value={field.value}
+                          />
+                        </FormItem>
+                      )}
                     />
                   </div>
                   {/* department  */}
@@ -278,11 +290,22 @@ const PostJobForm = () => {
                     >
                       Department/Subject
                     </label>
-                    <CustomEditableDropdown
-                      options={educationsData}
-                      placeholder={"Select or write degree"}
-                      onChange={(value) => setValue(value)}
-                      value={value}
+
+                    <FormField
+                      control={form.control}
+                      name="department"
+                      render={({ field }) => (
+                        <FormItem>
+                          <CustomEditableDropdown
+                            options={departmentSubjectData}
+                            placeholder={
+                              "Select or write department or subject"
+                            }
+                            onChange={(value) => field.onChange(value)}
+                            value={field.value}
+                          />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>
@@ -297,10 +320,30 @@ const PostJobForm = () => {
                     <span className="text-red-600">*</span>
                   </label>
                   <div className="flex items-center gap-5">
-                    <CustomCheckbox id={"full-time"} label={"Full-time"} />
-                    <CustomCheckbox id={"employer"} label={"Part-time"} />
-                    <CustomCheckbox id={"intern"} label={"Intern"} />
-                    <CustomCheckbox id={"contractual"} label={"Contractual"} />
+                    <CustomRadio
+                      id={"full-time"}
+                      label={"Full-time"}
+                      checked={selected === "full-time"}
+                      onChange={() => setSelected("full-time")}
+                    />
+                    <CustomRadio
+                      id={"part-time"}
+                      label={"Part-time"}
+                      checked={selected === "part-time"}
+                      onChange={() => setSelected("part-time")}
+                    />
+                    <CustomRadio
+                      id={"intern"}
+                      label={"Intern"}
+                      checked={selected === "intern"}
+                      onChange={() => setSelected("intern")}
+                    />
+                    <CustomRadio
+                      id={"contractual"}
+                      label={"Contractual"}
+                      checked={selected === "contractual"}
+                      onChange={() => setSelected("contractual")}
+                    />
                   </div>
                 </div>
 
@@ -314,24 +357,9 @@ const PostJobForm = () => {
                     <span className="text-red-600">*</span>
                   </label>
                   <div className="flex items-center gap-5">
-                    <CustomRadio
-                      id={"on-site"}
-                      label={"On site"}
-                      checked={selected === "on-site"}
-                      onChange={() => setSelected("on-site")}
-                    />
-                    <CustomRadio
-                      id={"remote"}
-                      label={"Remote"}
-                      checked={selected === "remote"}
-                      onChange={() => setSelected("remote")}
-                    />
-                    <CustomRadio
-                      id={"hybrid"}
-                      label={"Hybrid"}
-                      checked={selected === "hybrid"}
-                      onChange={() => setSelected("hybrid")}
-                    />
+                    <CustomCheckbox id={"on-site"} label={"On site"} />
+                    <CustomCheckbox id={"remote"} label={"Remote"} />
+                    <CustomCheckbox id={"hybrid"} label={"Hybrid"} />
                   </div>
                 </div>
 

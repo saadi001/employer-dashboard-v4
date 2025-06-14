@@ -154,3 +154,12 @@ export const sideDrawerData = [
 ];
 
 export const educationsData = ["SSC", "HSC", "Bachelor", "Masters", "Ph.D."];
+
+export const departmentSubjectData = [
+  "Any",
+  "Software Engineering",
+  "Electrical and Electronics Engineering",
+  "Business Administration",
+  "English",
+  "Economics",
+];
