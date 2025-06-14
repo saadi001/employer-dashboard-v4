@@ -17,7 +17,6 @@ const CustomEditableDropdown = ({
   required,
 }) => {
   const searchQuery = value || "";
-  // const [searchQuery, setSearchQuery] = useState(""); // search query for filter
   const [isOpen, setIsOpen] = useState(false); // control dropdown visibility
   const dropdownRef = useRef(null); // reference for clicking outside
   // Handle option selection

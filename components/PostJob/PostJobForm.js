@@ -129,9 +129,10 @@ const PostJobForm = () => {
                     <FormItem>
                       <CustomInput
                         id={"title"}
-                        label={"Tittle"}
+                        label={"Title"}
                         required={true}
-                        {...field}
+                        placeholder={"Ex: Project Manager"}
+                        field={field}
                       />
                       <FormMessage />
                     </FormItem>
@@ -140,6 +141,7 @@ const PostJobForm = () => {
 
                 {/* category and deadline  */}
                 <div className="grid grid-cols-2 gap-3">
+                  {/* category */}
                   <div className="space-y-2">
                     <label
                       htmlFor="title"
@@ -169,51 +171,66 @@ const PostJobForm = () => {
                       Deadline
                       <span className="text-red-600">*</span>
                     </label>
-                    <CustomDateSelect
+
+                    <FormField
+                      control={form.control}
+                      name={"deadline"}
+                      render={({ field }) => (
+                        <FormItem>
+                          <CustomDateSelect
+                            content={"Select Deadline"}
+                            className={"!h-12 !w-full"}
+                            field={field}
+                          />
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    {/* <CustomDateSelect
                       content={"Select Date"}
                       className={"!h-12 !w-full"}
-                    />
+                    /> */}
                   </div>
                 </div>
 
                 {/* vacancy and experience  */}
                 <div className="grid grid-cols-2 gap-3">
                   {/* vacancy  */}
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="vacancy"
-                      className="text-headerColor text-sm font-semibold "
-                    >
-                      Vacancy
-                      {/* <span className="text-red-600">*</span> */}
-                    </label>
-                    <input
-                      type="number"
-                      id="vacancy"
-                      placeholder="Ex: 2"
-                      min={1}
-                      max={999}
-                      className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600  focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
-                    />
-                  </div>
+                  <FormField
+                    control={form.control}
+                    name={"vacancy"}
+                    render={({ field }) => (
+                      <FormItem>
+                        <CustomInput
+                          id={"vacancy"}
+                          type={"number"}
+                          label={"Vacancy"}
+                          placeholder={"Ex: 3"}
+                          field={field}
+                        />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
                   {/* experience  */}
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="experience"
-                      className="text-headerColor text-sm font-semibold "
-                    >
-                      Experience
-                      {/* <span className="text-red-600">*</span> */}
-                    </label>
-                    <input
-                      type="text"
-                      id="experience"
-                      placeholder="Ex: 1 year"
-                      min={1}
-                      max={999}
-                      className="w-full  h-auto border rounded-lg flex-1 text-sm  px-3 py-3 text-headerColor focus:outline-1 hover:border-gray-600 focus:outline-primaryColor focus:border-gray-600  focus:ring-gray-600 placeholder:font-publicSans placeholder:text-sm"
-                    />
-                  </div>
+                  <FormField
+                    control={form.control}
+                    name={"experience"}
+                    render={({ field }) => (
+                      <FormItem>
+                        <CustomInput
+                          id={"experience"}
+                          type={"number"}
+                          label={"Experience (year) "}
+                          placeholder={"Ex: 1"}
+                          field={field}
+                        />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
               </div>
             </div>
@@ -573,7 +590,7 @@ const PostJobForm = () => {
 
             {/* submit button  */}
             <div className="w-full flex items-center justify-between mt-8 mb-12 px-4">
-              <CustomToggle label={"Draft"} />
+              <CustomToggle label={"Save as Draft"} />
 
               <button className="text-sm px-4 py-2 rounded-lg bg-primaryColor text-gray-50 font-semibold hover:bg-primaryHover">
                 PUBLISH
